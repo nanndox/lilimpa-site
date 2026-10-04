@@ -3,140 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiLimpa.pt | Limpezas Profissionais e Engomagem</title>
+    <title>LiLimpa.pt | Limpezas e Engomagem Profissional</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Supabase JS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts para um toque mais elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans">
+<body class="bg-rose-50/30 text-slate-800">
 
     <!-- HEADER -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 border-b border-rose-100">
         <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
-                <span class="text-2xl font-bold text-teal-600"><i class="fa-solid fa-sparkles"></i> LiLimpa</span>
-                <span class="text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded-full font-medium">Sacavém & Lisboa</span>
+                <span class="text-2xl font-bold text-rose-600 tracking-tight"><i class="fa-solid fa-sparkles"></i> LiLimpa</span>
+                <span class="text-xs bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full font-semibold">Loures, Lisboa & Arredores</span>
             </div>
-            <nav class="hidden md:flex space-x-6 font-medium text-slate-600">
-                <a href="#pacotes" class="hover:text-teal-600 transition">Pacotes</a>
-                <a href="#engomagem" class="hover:text-teal-600 transition">Engomagem</a>
-                <a href="#galeria" class="hover:text-teal-600 transition">Antes & Depois</a>
-                <a href="#contacto" class="hover:text-teal-600 transition">Orçamentos</a>
+            <nav class="hidden md:flex space-x-6 font-medium text-slate-600 text-sm">
+                <a href="#pacotes" class="hover:text-rose-600 transition">Packs & Serviços</a>
+                <a href="#engomagem" class="hover:text-rose-600 transition">Engomagem</a>
+                <a href="#galeria" class="hover:text-rose-600 transition">Antes & Depois</a>
+                <a href="#contacto" class="hover:text-rose-600 transition">Orçamentos</a>
             </nav>
             <div class="flex items-center space-x-3">
                 <a href="https://wa.me/351961391209?text=Olá,%20gostaria%20de%20pedir%20um%20orçamento%20de%20limpeza." target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-xl text-sm font-semibold flex items-center space-x-2 shadow-sm transition">
                     <i class="fa-brands fa-whatsapp text-lg"></i> <span>WhatsApp</span>
                 </a>
-                <a href="dashboard.html" class="text-slate-400 hover:text-slate-600 p-2" title="Painel Admin / Gerente"><i class="fa-solid fa-lock text-sm"></i></a>
+                <a href="dashboard.html" class="text-slate-400 hover:text-rose-600 p-2 transition" title="Painel Admin / Gerente"><i class="fa-solid fa-lock text-sm"></i></a>
             </div>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="bg-gradient-to-br from-teal-700 to-teal-900 text-white py-20 px-4">
-        <div class="max-w-4xl mx-auto text-center space-y-6">
-            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Limpeza Profissional com Rigor e Confiança</h1>
-            <p class="text-lg text-teal-100 max-w-2xl mx-auto">Deixe a limpeza e a engomagem connosco. Casas, apartamentos e escadas de prédios impecáveis em Lisboa e arredores.</p>
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-br from-rose-700 via-rose-800 to-slate-900 text-white py-20 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-4xl mx-auto text-center space-y-6 relative z-10">
+            <span class="inline-block bg-rose-500/30 text-rose-200 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-widest border border-rose-400/30">Serviço Premium & Rigor</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">A Excelência em Limpeza e Cuidado com o Lar</h1>
+            <p class="text-lg text-rose-100 max-w-2xl mx-auto font-light">Casas, apartamentos e condomínios impecáveis. Atuação especializada em **Loures, Lisboa e arredores**.</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-                <a href="#pacotes" class="bg-white text-teal-900 hover:bg-teal-50 font-bold px-8 py-3 rounded-xl shadow-lg transition">Ver Pacotes e Preços</a>
-                <a href="tel:961391209" class="border border-teal-300 hover:bg-teal-800 text-white font-semibold px-8 py-3 rounded-xl transition"><i class="fa-solid fa-phone mr-2"></i> 961 391 209</a>
+                <a href="#pacotes" class="bg-white text-rose-900 hover:bg-rose-50 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">Ver Packs (Mín. 3 Horas)</a>
+                <a href="tel:961391209" class="border border-rose-300/50 hover:bg-rose-800/50 text-white font-semibold px-8 py-3.5 rounded-xl transition"><i class="fa-solid fa-phone mr-2"></i> 961 391 209</a>
             </div>
         </div>
     </section>
 
-    <!-- PACOTES -->
+    <!-- PACOTES DE LIMPEZA (Mínimo 3 Horas) -->
     <section id="pacotes" class="py-16 px-4 max-w-7xl mx-auto">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-slate-900">Nossos Pacotes de Limpeza</h2>
-            <p class="text-slate-500 mt-2">Valores transparentes baseados no mercado profissional.</p>
+            <span class="text-rose-600 font-bold text-xs uppercase tracking-widest bg-rose-100 px-3 py-1 rounded-full">Flexíveis & Transparentes</span>
+            <h2 class="text-3xl font-bold text-slate-900 mt-2">Nossos Pacotes de Limpeza</h2>
+            <p class="text-slate-500 mt-1">Duração mínima de **3 horas** por intervenção para garantir um trabalho profundo e detalhado.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
+            <!-- Pack 1 -->
+            <div class="bg-white rounded-3xl shadow-sm border border-rose-100 p-8 flex flex-col justify-between hover:shadow-md transition">
                 <div>
-                    <span class="text-xs font-bold text-teal-600 uppercase tracking-wider">Essencial</span>
-                    <h3 class="text-xl font-bold mt-1 text-slate-900">Pack Express</h3>
-                    <p class="text-slate-500 text-sm mt-2">Chão, retirar pó, aspirar tapetes e organização ligeira da cozinha.</p>
-                    <div class="mt-6 text-3xl font-extrabold text-teal-700">€30 <span class="text-sm font-normal text-slate-400">/ média 2h30</span></div>
+                    <span class="text-xs font-bold text-rose-600 uppercase tracking-wider bg-rose-50 px-3 py-1 rounded-full">Essencial (Mín. 3h)</span>
+                    <h3 class="text-2xl font-bold mt-4 text-slate-900">Pack Express</h3>
+                    <p class="text-slate-500 text-sm mt-2">Ideal para manutenção semanal. Chão, remoção de pó, aspiração de tapetes e organização ligeira da cozinha.</p>
+                    <div class="mt-6 text-3xl font-extrabold text-rose-700">€35 <span class="text-sm font-normal text-slate-400">/ 3 horas</span></div>
                 </div>
-                <a href="https://wa.me/351961391209?text=Olá,%20quero%20agendar%20o%20Pack%20Express" class="mt-8 block text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-xl transition">Reservar via WhatsApp</a>
+                <a href="https://wa.me/351961391209?text=Olá,%20quero%20agendar%20o%20Pack%20Express%20(3h)" class="mt-8 block text-center bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3.5 rounded-xl transition shadow-sm">Reservar via WhatsApp</a>
             </div>
-            <div class="bg-white rounded-2xl shadow-md border-2 border-teal-500 p-6 flex flex-col justify-between relative">
-                <div class="absolute -top-3 right-4 bg-teal-500 text-white text-xs px-3 py-1 rounded-full font-bold">Mais Popular</div>
+            <!-- Pack 2 -->
+            <div class="bg-white rounded-3xl shadow-lg border-2 border-rose-500 p-8 flex flex-col justify-between relative transform md:-translate-y-2">
+                <div class="absolute -top-3 right-6 bg-rose-500 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider shadow-sm">Mais Solicitado</div>
                 <div>
-                    <span class="text-xs font-bold text-teal-600 uppercase tracking-wider">Completo</span>
-                    <h3 class="text-xl font-bold mt-1 text-slate-900">Pack Standard</h3>
-                    <p class="text-slate-500 text-sm mt-2">Limpeza total da casa, WC completo, cozinha detalhada e remoção profunda de pó.</p>
-                    <div class="mt-6 text-3xl font-extrabold text-teal-700">€50 <span class="text-sm font-normal text-slate-400">/ média 4h</span></div>
+                    <span class="text-xs font-bold text-rose-600 uppercase tracking-wider bg-rose-50 px-3 py-1 rounded-full">Completo (Mín. 4h)</span>
+                    <h3 class="text-2xl font-bold mt-4 text-slate-900">Pack Standard</h3>
+                    <p class="text-slate-500 text-sm mt-2">Limpeza total da habitação, WC completo, cozinha detalhada e remoção profunda de pó em todas as divisões.</p>
+                    <div class="mt-6 text-3xl font-extrabold text-rose-700">€50 <span class="text-sm font-normal text-slate-400">/ 4 horas</span></div>
                 </div>
-                <a href="https://wa.me/351961391209?text=Olá,%20quero%20agendar%20o%20Pack%20Standard" class="mt-8 block text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-xl transition">Reservar via WhatsApp</a>
+                <a href="https://wa.me/351961391209?text=Olá,%20quero%20agendar%20o%20Pack%20Standard%20(4h)" class="mt-8 block text-center bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3.5 rounded-xl transition shadow-md">Reservar via WhatsApp</a>
             </div>
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
+            <!-- Pack 3 -->
+            <div class="bg-white rounded-3xl shadow-sm border border-rose-100 p-8 flex flex-col justify-between hover:shadow-md transition">
                 <div>
-                    <span class="text-xs font-bold text-teal-600 uppercase tracking-wider">Avançado</span>
-                    <h3 class="text-xl font-bold mt-1 text-slate-900">Pack Deep Clean</h3>
-                    <p class="text-slate-500 text-sm mt-2">Inclui lavagem de vidros, rodapés, portas e limpeza profunda a fundo.</p>
-                    <div class="mt-6 text-3xl font-extrabold text-teal-700">€80+ <span class="text-sm font-normal text-slate-400">/ sob consulta</span></div>
+                    <span class="text-xs font-bold text-rose-600 uppercase tracking-wider bg-rose-50 px-3 py-1 rounded-full">Avançado (Mín. 5h+)</span>
+                    <h3 class="text-2xl font-bold mt-4 text-slate-900">Pack Deep Clean</h3>
+                    <p class="text-slate-500 text-sm mt-2">Inclui lavagem de vidros, rodapés, portas, interruptores e limpeza a fundo para mudanças ou ocasiões especiais.</p>
+                    <div class="mt-6 text-3xl font-extrabold text-rose-700">€75+ <span class="text-sm font-normal text-slate-400">/ sob consulta</span></div>
                 </div>
-                <a href="https://wa.me/351961391209?text=Olá,%20quero%20orçamento%20para%20Pack%20Deep%20Clean" class="mt-8 block text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 rounded-xl transition">Pedir Orçamento</a>
+                <a href="https://wa.me/351961391209?text=Olá,%20quero%20orçamento%20para%20o%20Pack%20Deep%20Clean" class="mt-8 block text-center bg-rose-600 hover:bg-rose-700 text-white font-semibold py-3.5 rounded-xl transition shadow-sm">Pedir Orçamento</a>
             </div>
         </div>
     </section>
 
-    <!-- ENGOMAGEM & MB WAY -->
-    <section id="engomagem" class="bg-teal-50 py-16 px-4 border-y border-teal-100">
-        <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-sm p-8 md:p-12">
+    <!-- SECÇÃO DE ENGOMAGEM & MB WAY (Preço unitário €0,80) -->
+    <section id="engomagem" class="bg-rose-50/60 py-16 px-4 border-y border-rose-100">
+        <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-sm p-8 md:p-12 border border-rose-100">
             <div class="text-center mb-8">
-                <h2 class="text-3xl font-bold text-slate-900"><i class="fa-solid fa-shirt text-teal-600 mr-2"></i> Serviço de Engomagem</h2>
-                <p class="text-slate-500 mt-2">Calculadora interativa e pagamento seguro via MB Way.</p>
+                <span class="text-rose-600 font-bold text-xs uppercase tracking-widest bg-rose-100 px-3 py-1 rounded-full">Pronto a Entregar</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2"><i class="fa-solid fa-shirt text-rose-600 mr-2"></i> Serviço de Engomagem</h2>
+                <p class="text-slate-500 mt-1">Calculadora interativa a **€0,80 por peça**, com pagamento seguro via MB Way.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div class="space-y-4">
                     <label class="block font-medium text-slate-700">Quantidade de peças de roupa:</label>
-                    <input type="number" id="qnt-pecas" min="1" value="10" oninput="calcularEngomagem()" class="w-full border border-slate-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-teal-500 outline-none">
-                    <div class="bg-teal-50 p-4 rounded-xl border border-teal-100 flex justify-between items-center">
+                    <input type="number" id="qnt-pecas" min="1" value="15" oninput="calcularEngomagem()" class="w-full border border-slate-200 bg-rose-50/20 rounded-xl px-4 py-3 focus:ring-2 focus:ring-rose-500 outline-none font-semibold text-lg">
+                    <div class="bg-rose-50/50 p-4 rounded-xl border border-rose-100 flex justify-between items-center">
                         <span class="font-medium text-slate-700">Total Estimado:</span>
-                        <span class="text-2xl font-extrabold text-teal-700" id="total-engomagem">€13,00</span>
+                        <span class="text-2xl font-extrabold text-rose-700" id="total-engomagem">€12,00</span>
                     </div>
-                    <p class="text-xs text-slate-400">* Preço unitário base: €1,30 por peça.</p>
+                    <p class="text-xs text-slate-400">* Preço unitário ajustado: €0,80 por peça.</p>
                 </div>
-                <div class="bg-slate-900 text-white p-6 rounded-2xl space-y-4">
-                    <h3 class="font-bold text-lg flex items-center"><i class="fa-solid fa-mobile-screen-button text-teal-400 mr-2"></i> Pagamento MB Way</h3>
-                    <p class="text-sm text-slate-300">Pague antecipadamente para garantir prioridade ou pague no ato da entrega.</p>
-                    <div class="bg-slate-800 p-3 rounded-xl font-mono text-teal-300 text-center text-lg font-bold">
+                <div class="bg-slate-900 text-white p-6 rounded-2xl space-y-4 shadow-inner">
+                    <h3 class="font-bold text-lg flex items-center"><i class="fa-solid fa-mobile-screen-button text-rose-400 mr-2"></i> Pagamento MB Way</h3>
+                    <p class="text-sm text-slate-300">Pague antecipadamente ou no ato de entrega das roupas limpas.</p>
+                    <div class="bg-slate-800 p-3.5 rounded-xl font-mono text-rose-300 text-center text-xl font-bold tracking-wider">
                         961 391 209
                     </div>
-                    <a id="btn-encomendar-roupa" href="#" target="_blank" class="block text-center bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold py-3 rounded-xl transition">Avançar com Pedido via WhatsApp</a>
+                    <a id="btn-encomendar-roupa" href="#" target="_blank" class="block text-center bg-rose-500 hover:bg-rose-400 text-slate-950 font-bold py-3.5 rounded-xl transition shadow-md">Avançar com Pedido via WhatsApp</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- CONTACTO / ORÇAMENTOS -->
     <section id="contacto" class="py-16 px-4 max-w-3xl mx-auto">
         <div class="text-center mb-8">
             <h2 class="text-3xl font-bold text-slate-900">Pedir Orçamento Direto</h2>
-            <p class="text-slate-500 mt-2">Envie-nos uma mensagem. Entramos em contacto rapidamente.</p>
+            <p class="text-slate-500 mt-1">Atendimento rápido para **Loures, Lisboa e arredores**.</p>
         </div>
         <form id="contact-form" onsubmit="enviarMensagem(event)" class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" id="cli-nome" placeholder="O seu nome" required class="border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-teal-500">
-                <input type="tel" id="cli-telemovel" placeholder="Telemóvel / WhatsApp" required class="border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-teal-500">
+                <input type="text" id="cli-nome" placeholder="O seu nome" required class="border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-rose-500 bg-white">
+                <input type="tel" id="cli-telemovel" placeholder="Telemóvel / WhatsApp" required class="border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-rose-500 bg-white">
             </div>
-            <textarea id="cli-mensagem" rows="4" placeholder="Descreva o serviço pretendido..." required class="w-full border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-teal-500"></textarea>
-            <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3.5 rounded-xl transition shadow-md">Enviar Pedido</button>
+            <textarea id="cli-mensagem" rows="4" placeholder="Descreva o serviço pretendido (Ex: T2 em Sacavém, limpezas quinzenais)..." required class="w-full border border-slate-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-rose-500 bg-white"></textarea>
+            <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold py-3.5 rounded-xl transition shadow-md">Enviar Pedido para Lilimpa</button>
         </form>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-12 px-4">
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 border-t border-slate-800">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-                <span class="text-xl font-bold text-white"><i class="fa-solid fa-sparkles text-teal-400"></i> LiLimpa.pt</span>
-                <p class="text-sm mt-1">Limpezas Domésticas e Profissionais em Sacavém & Lisboa.</p>
+                <span class="text-xl font-bold text-white flex items-center"><i class="fa-solid fa-sparkles text-rose-400 mr-2"></i> LiLimpa.pt</span>
+                <p class="text-sm mt-1">Limpezas Domésticas, Prédios e Engomagem em Loures, Lisboa e arredores.</p>
             </div>
-            <div class="text-sm space-y-1 text-center md:text-right">
-                <p><i class="fa-solid fa-envelope mr-2 text-teal-400"></i> lilimpa.info@gmail.com</p>
-                <p><i class="fa-solid fa-phone mr-2 text-teal-400"></i> 961 391 209 / 964 505 531</p>
+            <div class="text-sm space-y-1 text-center md:text-right text-slate-300">
+                <p><i class="fa-solid fa-envelope mr-2 text-rose-400"></i> lilimpa.info@gmail.com</p>
+                <p><i class="fa-solid fa-phone mr-2 text-rose-400"></i> 961 391 209 / 964 505 531</p>
             </div>
         </div>
     </footer>
@@ -148,9 +162,9 @@
 
         function calcularEngomagem() {
             const qtd = document.getElementById('qnt-pecas').value || 0;
-            const total = qtd * 1.30;
+            const total = qtd * 0.80;
             document.getElementById('total-engomagem').innerText = '€' + total.toFixed(2).replace('.', ',');
-            const msg = encodeURIComponent(`Olá, gostaria de solicitar o serviço de engomagem para ${qtd} peças (${total.toFixed(2)}€). Pagamento via MB Way.`);
+            const msg = encodeURIComponent(`Olá, gostaria de solicitar o serviço de engomagem para ${qtd} peças (${total.toFixed(2)}€ a 0,80€/peça). Pagamento via MB Way.`);
             document.getElementById('btn-encomendar-roupa').href = `https://wa.me/351961391209?text=${msg}`;
         }
 
@@ -167,7 +181,7 @@
             if (error) {
                 window.location.href = `https://wa.me/351961391209?text=Nome: ${encodeURIComponent(nome)} - ${encodeURIComponent(mensagem)}`;
             } else {
-                alert('Mensagem enviada com sucesso! Entraremos em contacto brevemente.');
+                alert('Mensagem enviada com sucesso! A Liliana entrará em contacto brevemente.');
                 document.getElementById('contact-form').reset();
             }
         }
