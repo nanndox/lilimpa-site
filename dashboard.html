@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gestão | LiLimpa.pt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans">
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="min-h-screen flex items-center justify-center px-4">
+        <div class="bg-white p-8 rounded-3xl shadow-md w-full max-w-md space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold text-slate-900">Acesso Restrito</h2>
+                <p class="text-sm text-slate-500 mt-1">Fernando Dias (Admin) & Liliana Dias (Gerente)</p>
+            </div>
+            <form onsubmit="fazerLogin(event)" class="space-y-4">
+                <input type="email" id="login-email" placeholder="Email (ex: fernando@lilimpa.pt)" required class="w-full border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-teal-500">
+                <input type="password" id="login-pass" placeholder="Palavra-passe" required class="w-full border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-teal-500">
+                <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 rounded-xl transition">Entrar no Dashboard</button>
+            </form>
+            <div class="text-center">
+                <a href="index.html" class="text-xs text-slate-400 hover:text-slate-600"><i class="fa-solid fa-arrow-left mr-1"></i> Voltar ao site público</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN / GERENTE DASHBOARD (Oculto inicialmente) -->
+    <div id="admin-dashboard" class="hidden min-h-screen flex flex-col">
+        <header class="bg-slate-900 text-white px-6 py-4 flex justify-between items-center shadow">
+            <div class="flex items-center space-x-3">
+                <span class="text-xl font-bold"><i class="fa-solid fa-shield-halved text-teal-400"></i> LiLimpa Gestão</span>
+                <span id="user-role-badge" class="text-xs bg-teal-500 text-slate-950 font-bold px-2.5 py-0.5 rounded-full"></span>
+            </div>
+            <button onclick="fazerLogout()" class="text-sm text-slate-300 hover:text-white bg-slate-800 px-3 py-1.5 rounded-lg">Sair</button>
+        </header>
+
+        <main class="max-w-7xl mx-auto p-6 w-full space-y-8">
+            <!-- Caixa de Mensagens -->
+            <div class="bg-white rounded-2xl shadow-sm p-6 border border-slate-200">
+                <h3 class="text-lg font-bold text-slate-900 mb-4"><i class="fa-solid fa-inbox text-teal-600 mr-2"></i> Caixa de Mensagens de Clientes</h3>
+                <div id="mensagens-lista" class="space-y-3">
+                    <p class="text-sm text-slate-400">A carregar mensagens...</p>
+                </div>
+            </div>
+
+            <!-- Gestão de Preços & Galeria -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl shadow-sm p-6 border border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4"><i class="fa-solid fa-tags text-teal-600 mr-2"></i> Alterar Preços dos Packs</h3>
+                    <p class="text-sm text-slate-500 mb-4">Atualize os valores apresentados no site em tempo real.</p>
+                    <div class="space-y-3">
+                        <input type="text" placeholder="Nome do Pack (ex: Pack Express)" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm">
+                        <input type="number" placeholder="Novo Preço (€)" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm">
+                        <button class="bg-teal-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl w-full">Guardar Novo Preço</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm p-6 border border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4"><i class="fa-solid fa-camera text-teal-600 mr-2"></i> Publicar Antes & Depois</h3>
+                    <p class="text-sm text-slate-500 mb-4">Adicione fotos dos trabalhos efetuados (até 5 fotos).</p>
+                    <div class="space-y-3">
+                        <input type="text" placeholder="Título do trabalho (ex: Cozinha Parque das Nações)" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm">
+                        <input type="text" placeholder="URL Foto Antes" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm">
+                        <input type="text" placeholder="URL Foto Depois" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 text-sm">
+                        <button class="bg-teal-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl w-full">Publicar na Galeria</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://teu-projeto.supabase.co';
+        const SUPABASE_ANON_KEY = 'tua-anon-key';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function fazerLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-pass').value;
+
+            const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+            
+            if (error) {
+                alert('Erro no login: Verifique o email e palavra-passe.');
+            } else {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('admin-dashboard').classList.remove('hidden');
+                document.getElementById('user-role-badge').innerText = email.includes('fernando') ? 'ADMIN (Fernando)' : 'GERENTE (Liliana)';
+                carregarMensagens();
+            }
+        }
+
+        async function carregarMensagens() {
+            const { data } = await supabaseClient.from('mensagens_clientes').select('*').order('data_envio', { ascending: false });
+            const container = document.getElementById('mensagens-lista');
+            if(!data || data.length === 0) {
+                container.innerHTML = '<p class="text-sm text-slate-400">Sem novas mensagens.</p>';
+                return;
+            }
+            container.innerHTML = data.map(m => `
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex justify-between items-start">
+                    <div>
+                        <h4 class="font-bold text-sm text-slate-900">${m.nome} <span class="text-xs font-normal text-slate-500">(${m.telemovel})</span></h4>
+                        <p class="text-sm text-slate-600 mt-1">${m.mensagem}</p>
+                    </div>
+                    <span class="text-[10px] text-slate-400">${new Date(m.data_envio).toLocaleDateString()}</span>
+                </div>
+            `).join('');
+        }
+
+        async function fazerLogout() {
+            await supabaseClient.auth.signOut();
+            location.reload();
+        }
+    </script>
+</body>
+</html>
